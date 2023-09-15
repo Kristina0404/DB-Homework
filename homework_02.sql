@@ -1,8 +1,9 @@
 --Вывести название и стоимость в USD одного самого дорогого проданного товара
 
 SELECT ProductName,
-Price AS Price_usd
-FROM [Products]
+Price *1.1 AS Price_usd
+FROM [OrderDetails]
+JOIN Products ON OrderDetails.ProductId=ProductsId
 Order by Price DESC
 LIMIT 1
 
@@ -20,7 +21,7 @@ LIMIT 2
 -- Удалить товары с ценой менее 5 EUR
 
 DELETE FROM [Products]
-WHERE Price > 5
+WHERE Price < 5
 ORDER BY Price 
 
 --  Вывести список стран, которые поставляют морепродукты
